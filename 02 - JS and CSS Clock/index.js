@@ -10,11 +10,19 @@ const clock = () => {
 
     let secValue = ((sec / 60) * 360) + 90;
     let minValue = ((min / 60) * 360) + 90;
-    let hourValue = (hour / 12) * 360 + 90;
+    let hourValue = ((hour / 12) * 360) + 90;
 
     secHand.style.transform = `rotate(${secValue}deg)`;
     minHand.style.transform = `rotate(${minValue}deg)`;
     hourHand.style.transform = `rotate(${hourValue}deg)`;
+
+    if (secValue == 450) {
+        setTimeout(secHand.style.setProperty('transition', 'none'), 900);
+    } else if (minValue === 450) {
+        setTimeout(secHand.style.setProperty("transition", "none"), 900);
+    } else if (hourValue == 450) {
+        setTimeout(secHand.style.setProperty("transition", "none"), 900);
+    }
 };
 
 setInterval(clock, 1000);
