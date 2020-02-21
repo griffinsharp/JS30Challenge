@@ -16,12 +16,17 @@ const clock = () => {
     minHand.style.transform = `rotate(${minValue}deg)`;
     hourHand.style.transform = `rotate(${hourValue}deg)`;
 
-    if (secValue == 450) {
-        setTimeout(secHand.style.setProperty('transition', 'none'), 900);
-    } else if (minValue === 450) {
-        setTimeout(secHand.style.setProperty("transition", "none"), 900);
-    } else if (hourValue == 450) {
-        setTimeout(secHand.style.setProperty("transition", "none"), 900);
+    const smoothTransition = (hand) => {
+        setTimeout(hand.style.setProperty("transition", "none"), 900);
+    };
+
+    // there's a stutter trying to go from the final 
+    if (secValue == 444) {
+        smoothTransition(secHand);
+    } else if (minValue == 444) {
+        smoothTransition(minHand);
+    } else if (hourValue > 420) {
+        smoothTransition(hourHand);
     }
 };
 
