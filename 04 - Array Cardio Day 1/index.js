@@ -106,9 +106,23 @@ console.log(yearsLived);
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+// Ran on console on wikipedia page above...
+// const links = document.querySelectorAll(".mw-category a");
+// const deResult = Array.from(links)
+//   .map(ele => ele.textContent)
+//   .filter(ele => ele.includes("de"));
+
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+// Use a destructure just to compare the 
 
+const peopleSorted = people.sort((a,b) => {
+    const [aLast, aFirst] = a.split(", ");
+    const [bLast, bFirst] = b.split(", ");
+    return (aLast > bLast) ? 1 : -1;
+});
+
+console.log(peopleSorted);
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = [
@@ -127,3 +141,19 @@ const data = [
   "car",
   "truck"
 ];
+
+const countedData = data.reduce((acc, ele) => {
+    // Check if item already exists in array or not
+    // Initialize its value to one if it does not exist.
+    // Add one to its value if it does exist.
+    // Make sure to return the accumulator each time.
+    if (!acc[ele]) {
+        acc[ele] = 1;
+    } else {
+        acc[ele] += 1;
+    }
+
+    return acc;
+}, {});
+
+console.log(countedData);
